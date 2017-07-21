@@ -1,7 +1,7 @@
 <h1>Featured Photos</h1>
 <div fxLayoutAlign="space-around center">
   <div>
-      <button type="button" (click)="featuredInput1.click()">My pretty MD button</button>
+    <button type="button" (click)="featuredInput1.click()">My pretty MD button</button>
     <input #featuredInput1 style="display: none" type="file" (change)="featuredPhotoSelected($event, 'url1')"><br>
     <img *ngIf="(featuredPhotoStream | async)?.url1 as url" [src]="url" alt="Featured Photo 1">
   </div>
@@ -10,4 +10,9 @@
     <img *ngIf="(featuredPhotoStream | async)?.url2 as url" [src]="url" alt="Featured Photo 2">
   </div>
 </div>
+<hr>
+<h1>Photo List</h1>
+<input type="file" (change)="photoSelectedForList($event)"><br>
+
+<img *ngFor="let p of photoListStream | async" [src]="p.url" alt="Photo in the list">
 <hr>
